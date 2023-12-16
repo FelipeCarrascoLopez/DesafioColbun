@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :articles
-  root 'pages#home'
+  #root 'pages#home'
+  root 'articles#index'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',

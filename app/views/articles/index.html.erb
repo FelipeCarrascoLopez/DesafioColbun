@@ -1,14 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/articles/index.html.erb -->
 
-<h1>Articles</h1>
+<h1>articles</h1>
 
-<div id="articles">
+<div class="container" style="width: 80%; margin: 20px auto;">
   <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+    <a href="<%= article_path(article) %>" class="card-link">
+      <div class="card" style="display: flex; background-color: #f0f0f0; margin-bottom: 20px;">
+        <% if article.image.attached? %>
+          <img src="<%= url_for(article.image) %>" alt="<%= article.headline %>" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px 0 0 8px;">
+        <% else %>
+          <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
+          <div style="width: 200px; height: 200px; background-color: #ccc; border-radius: 8px 0 0 8px;"></div>
+        <% end %>
+        <div class="card-body" style="flex-grow: 1; padding: 10px;">
+          <h2 class="card-title"><%= article.headline %></h2>
+        </div>
+      </div>
+    </a>
   <% end %>
 </div>
-
-<%= link_to "New article", new_article_path %>
