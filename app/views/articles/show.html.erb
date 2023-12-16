@@ -2,9 +2,17 @@
 
 <%= render @article %>
 
-<div>
+<% if @article.image.attached? %>
+  <%= image_tag @article.image %>
+<% else %>
+  <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
+  <div style="width: 200px; height: 200px; background-color: #ccc; border-radius: 8px;"></div>
+<% end %>
+
+<% if current_user == @article.user %>
+  <div>
   <%= link_to "Edit this article", edit_article_path(@article) %> |
   <%= link_to "Back to articles", articles_path %>
-
   <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
+  </div> 
+<% end %>

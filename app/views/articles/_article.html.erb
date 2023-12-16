@@ -1,17 +1,8 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Headline:</strong>
-    <%= article.headline %>
-  </p>
+<!-- app/views/articles/_article.html.erb -->
 
-  <p>
-    <strong>Lead:</strong>
-    <%= article.lead %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </p>
-
+<div>
+  <h2 class="card-title"> <%= article.headline %> </h2>
+  <h2 class="card-title"> <%= article.user.full_name %> </h2>
+  <h2 class="card-title"> <%= article.id %> </h2>
 </div>
+
