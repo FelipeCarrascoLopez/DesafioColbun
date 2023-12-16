@@ -1,12 +1,14 @@
 <!-- app/views/shared/_navbar.html.erb -->
 
 <nav class="navbar">
-    <ul>
+  <ul>
     <li><%= link_to 'News', root_path %></li>
-    <li><%= link_to 'Login', new_user_session_path %></li>
-    
+
     <% if current_user %>
-    <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
+      <%= link_to "Create News", new_article_path %>
+            <%= button_to "Logout", destroy_user_session_path, data: { turbo: "false" }, method: :delete %>
+    <% else %>
+      <li><%= link_to 'Login', new_user_session_path %></li>
     <% end %>
   </ul>
 </nav>

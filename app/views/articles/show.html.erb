@@ -1,18 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
+<div class="image-container">
+  <% if @article.image.attached? %>
+    <%= image_tag @article.image %>
+  <% else %>
+    <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
+    <div class="default-image"></div>
+  <% end %>
+</div>
 
-<% if @article.image.attached? %>
-  <%= image_tag @article.image %>
-<% else %>
-  <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
-  <div style="width: 200px; height: 200px; background-color: #ccc; border-radius: 8px;"></div>
-<% end %>
+<div>
+  <p> <%= @article.headline %> </p>
+</div>
+
+<div>
+  <p> <%= @article.user.full_name %> </p>
+</div>
+
+<div>
+  <p> <%= @article.created_at %> </p>
+</div> 
+
+<div>
+  <p> <%= @article.lead %> </p>
+</div> 
+
+<div>
+  <p> <%= @article.body %> </p>
+</div> 
 
 <% if current_user == @article.user %>
   <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-  <%= button_to "Destroy this article", @article, method: :delete %>
+    <%= link_to "Edit this article", edit_article_path(@article) %> |
+    <%= link_to "Back to articles", articles_path %>
+    <%= button_to "Destroy this article", @article, method: :delete %>
   </div> 
 <% end %>
