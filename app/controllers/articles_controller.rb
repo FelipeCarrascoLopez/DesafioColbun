@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /articles/new
@@ -22,17 +23,12 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = current_user.article.new(article_params)
-
-    respond_to do |format|
+    @article = current_user.article.build(article_params)
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
