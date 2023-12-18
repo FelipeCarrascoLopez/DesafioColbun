@@ -6,7 +6,7 @@
 
   <p class="mb-4 text-gray-700"><%= comment.text %></p>
 
-  <% if current_user == @article.user %>
+  <% if current_user == comment.user %>
   <div class="flex items-center">
     <%= button_to 'Delete comment', comment_path(comment), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }}, class: "text-red-500 hover:underline" %>
   </div>

@@ -29,7 +29,6 @@
   <p> <%= @article.body %> </p>
 </div>
 
-
 <div class="w-full">
   <div class="mb-6">
     <h4 class="text-lg font-semibold mb-2"> Comments</h4>
@@ -38,11 +37,14 @@
     <% end %>
   </div>
 
+<% if current_user %>
   <div class="mb-6">
     <h5 class="text-lg font-semibold mb-2"> Add Comment</h5>
     <%= render 'comments/form', {article: @article, comment: @comment} %>
   </div>
 </div>
+
+  <% end %>
 
   <% if current_user == @article.user %>
     <div class="flex items-center mt-6">
