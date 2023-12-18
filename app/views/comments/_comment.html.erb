@@ -1,14 +1,14 @@
-<div id="<%= dom_id comment %>">
-  <p>
-    <strong>Text:</strong>
-    <%= comment.text %>
-  </p>
+<div id="<%= dom_id comment %>" class="border rounded p-4 mb-4">
+  <div class="mb-2">
+    <p class="font-semibold text-gray-800"><%= comment.user.full_name %></p>
+    <p class="text-gray-600"><%= comment.created_at.strftime("%B %e, %Y %l:%M%P") %></p>
+  </div>
 
-  <p>
-    <strong>Article:</strong>
-    <%= comment.article_id %>
-  </p>
-<div>
-<%= button_to 'Delete comment', comment_path(comment), method: :delete, form: { data: { turbo_confirm: 'are you sure?' }} %>
-</div>
+  <p class="mb-4 text-gray-700"><%= comment.text %></p>
+
+  <% if current_user == @article.user %>
+  <div class="flex items-center">
+    <%= button_to 'Delete comment', comment_path(comment), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }}, class: "text-red-500 hover:underline" %>
+  </div>
+    <% end %>
 </div>

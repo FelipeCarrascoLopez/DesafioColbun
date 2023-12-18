@@ -2,7 +2,9 @@
   <ul class="flex gap-2 items-center">
     <li class="font-bold text-lg text-white"> <%= link_to 'Colbun', root_path %> </li>
       <li> <%= link_to 'News', root_path, class: "btn-primary" %> </li>
+      <% if current_user %>
       <li> <%= link_to 'Create News', new_article_path, class: "btn-primary" %> </li>
+       <% end %>
   </ul>
   
   <ul class="flex gap-2 items-center">

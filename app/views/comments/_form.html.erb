@@ -1,15 +1,14 @@
-<%= form_with(model: comment) do |form| %>
-
-  <div>
+<%= form_with(model: comment, class: "mt-6") do |form| %>
+  <div class="mb-4">
     <%= form.hidden_field :article_id, value: article.id %>
   </div>
 
-  <div>
-    <%= form.label :text, style: "display: block" %>
-    <%= form.text_field :text %>
+  <div class="mb-4">
+    <%= form.label :text, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :text, class: "w-full px-3 py-2 leading-tight border border-gray-300 rounded shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-500" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-6">
+    <%= form.submit "Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>

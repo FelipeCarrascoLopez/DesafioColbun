@@ -1,53 +1,54 @@
-<section class="flex flex-col m-20 px-10 border-gray-200 items-center justify-center rounded-lg">  
-  <h1 class="main-title"> News </h1>
+<section class="flex flex-col m-20 p-8 items-center justify-center rounded-lg bg-white shadow-lg">
 
-<div class="image-container">
-  <% if @article.image.attached? %>
-    <%= image_tag @article.image %>
-  <% else %>
-    <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
-    <div class="default-image"></div>
-  <% end %>
+  <div class="image-container mb-6">
+    <% if @article.image.attached? %>
+      <%= image_tag @article.image, class: "w-full h-auto max-h-600 object-cover rounded-lg shadow-md" %>
+    <% else %>
+      <!-- Mostrar algo predeterminado si no hay imagen adjunta -->
+      <div class="default-image w-full h-40 bg-gray-300 rounded-lg"></div>
+    <% end %>
+  </div>
+
+<!-- Titulo -->
+<div class="mb-4">
+  <p class="text-3xl font-bold text-gray-800"> <%= @article.headline %> </p>
 </div>
 
-<div>
-  <p> <%= @article.headline %> </p>
-</div>
-
-<div>
-  <p> <%= @article.user.full_name %> </p>
-</div>
-
-<div>
-  <p> <%= @article.created_at %> </p>
+<!-- Bajada -->
+<div class="mb-4">
+  <p class="text-gray-700 text-sm"> <%= @article.lead %> </p>
 </div> 
 
-<div>
-  <p> <%= @article.lead %> </p>
-</div> 
+<!-- Autor y fecha-->
+<div class="mb-1 text-sm text-gray-500">
+  <p> By <%= @article.user.full_name %> | <%= l(@article.created_at, format: :long) %> </p> 
+</div>
 
-<div>
+<!-- Cuerpo -->
+<div class="mb-6 text-gray-800">
   <p> <%= @article.body %> </p>
-</div> 
+</div>
 
 
-  <div>
-  <h4> Comments</h4>
-  <% @article.comment.each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
-  <% end %>
-  </div> 
+<div class="w-full">
+  <div class="mb-6">
+    <h4 class="text-lg font-semibold mb-2"> Comments</h4>
+    <% @article.comment.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
 
-<% if current_user == @article.user %>
-  <div>
-  <h5> Add Comment</h5>
+  <div class="mb-6">
+    <h5 class="text-lg font-semibold mb-2"> Add Comment</h5>
     <%= render 'comments/form', {article: @article, comment: @comment} %>
-  </div> 
+  </div>
+</div>
 
-  <div>
-    <%= link_to "Edit this article", edit_article_path(@article) %> |
-    <%= link_to "Back to articles", articles_path %>
-    <%= button_to "Destroy this article", @article, method: :delete, form: { data: { turbo_confirm: 'are you sure?' }} %>
-  </div> 
-<% end %>
+  <% if current_user == @article.user %>
+    <div class="flex items-center mt-6">
+      <%= link_to "Back to articles", articles_path, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mr-2" %>
+      <%= link_to "Edit this article", edit_article_path(@article), class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mr-2" %>
+      <%= button_to "Destroy this article", @article, method: :delete, form: { data: { turbo_confirm: 'are you sure?' }}, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700" %>
+    </div>
+  <% end %>
 </section>
