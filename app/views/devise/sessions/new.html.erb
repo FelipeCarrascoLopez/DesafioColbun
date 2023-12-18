@@ -1,26 +1,31 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<section class="flex flex-col m-20 px-10 border-2 border-gray-200 items-center justify-center rounded-lg">
+  <h1 class="main-title">Log in</h1>
+  <div class="mb-10 w-full">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "flex flex-col w-full") do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "label-form" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-form" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class: "label-form" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "field-form" %>
   </div>
+
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, class: "checkbox-form" %>
+      <%= f.label :remember_me, class: "label-form" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  
+  <div class="mt-10 flex justify-center items-center">
+    <%= f.submit 'Log in', class: "btn-primary bg-green-800" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+  </div>
+</section>

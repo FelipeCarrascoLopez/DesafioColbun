@@ -1,14 +1,16 @@
-<!-- app/views/shared/_navbar.html.erb -->
-
-<nav class="navbar">
-  <ul>
-    <li><%= link_to 'News', root_path %></li>
-
+<nav class="flex justify-between p-3 bg-blue-900">
+  <ul class="flex gap-2 items-center">
+    <li class="font-bold text-lg text-white"> <%= link_to 'Colbun', root_path %> </li>
+      <li> <%= link_to 'News', root_path, class: "btn-primary" %> </li>
+      <li> <%= link_to 'Create News', new_article_path, class: "btn-primary" %> </li>
+  </ul>
+  
+  <ul class="flex gap-2 items-center">
     <% if current_user %>
-      <%= link_to "Create News", new_article_path %>
-            <%= button_to "Logout", destroy_user_session_path, data: { turbo: "false" }, method: :delete %>
+      <li> <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn-primary bg-red-700" %> </li>
+      <li class="text-white text-sm font-semibold"> <%= current_user.email %> </li>
     <% else %>
-      <li><%= link_to 'Login', new_user_session_path %></li>
+      <li> <%= link_to 'Login', new_user_session_path, class: "btn-primary bg-green-700" %> </li>
     <% end %>
   </ul>
 </nav>

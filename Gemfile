@@ -75,3 +75,5 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem 'image_processing', '~> 1.11'
 gem 'mini_magick', '~> 4.11'
+
+gem 'tailwindcss-rails'

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 text-white text-sm font-semibold rounded;
+  },
+  .main-title{
+    @apply font-bold text-3xl my-10;
+  },
+  .label-form{
+    @apply font-bold mb-2;
+  },
+  .field-form{
+    @apply w-full mb-5 rounded-lg text-sm font-semibold;
+  },
+  .big-card{
+    @apply flex flex-col border-2 border-gray-400 rounded-lg p-10 items-center gap-3;
+  }
+}
